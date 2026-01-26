@@ -1,27 +1,51 @@
-<div class="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+<div
+  class="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans"
+>
   <p-toast position="bottom-right"></p-toast>
   <div class="w-full max-w-md">
     <p-card styleClass="border-none shadow-xl rounded-2xl overflow-hidden">
       <div class="p-4 text-center">
-        <h1 class="text-slate-400 uppercase tracking-widest text-sm font-bold mb-8">
+        <h1
+          class="text-slate-400 uppercase tracking-widest text-sm font-bold mb-8"
+        >
           Minimal Counter
         </h1>
 
         <div class="flex items-center justify-center gap-8 mb-10">
-          <p-button icon="pi pi-minus" (onClick)="decrement()" [rounded]="true" [text]="true" severity="secondary"
-            styleClass="w-12 h-12 border-2 border-slate-200 hover:bg-slate-100 transition-all active:scale-90"></p-button>
+          <p-button
+            icon="pi pi-minus"
+            (onClick)="decrement()"
+            [rounded]="true"
+            [text]="true"
+            severity="secondary"
+            styleClass="w-12 h-12 border-2 border-slate-200 hover:bg-slate-100 transition-all active:scale-90"
+          ></p-button>
 
-          <span class="text-8xl font-black text-slate-800 tabular-nums tracking-tighter">
+          <span
+            class="text-8xl font-black text-slate-800 tabular-nums tracking-tighter"
+          >
             {{ count }}
           </span>
 
-          <p-button icon="pi pi-plus" (onClick)="increment()" [rounded]="true" [text]="true" severity="primary"
-            styleClass="w-12 h-12 border-2 border-blue-100 bg-blue-50 text-blue-600 hover:bg-blue-100 transition-all active:scale-90"></p-button>
+          <p-button
+            icon="pi pi-plus"
+            (onClick)="increment()"
+            [rounded]="true"
+            [text]="true"
+            severity="primary"
+            styleClass="w-12 h-12 border-2 border-blue-100 bg-blue-50 text-blue-600 hover:bg-blue-100 transition-all active:scale-90"
+          ></p-button>
         </div>
 
         <div class="flex justify-center pt-4 border-t border-slate-100">
-          <p-button label="Reset" icon="pi pi-refresh" (onClick)="reset()" [text]="true" severity="secondary"
-            styleClass="text-slate-400 hover:text-slate-600 font-medium px-4 py-2"></p-button>
+          <p-button
+            label="Reset"
+            icon="pi pi-refresh"
+            (onClick)="reset()"
+            [text]="true"
+            severity="secondary"
+            styleClass="text-slate-400 hover:text-slate-600 font-medium px-4 py-2"
+          ></p-button>
         </div>
       </div>
     </p-card>
