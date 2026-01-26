@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Dasun Bandara",
+      "email": "dasun@example.com",
+      "role": "Trainee Software Engineer",
+      "avatarUrl": "https://i.pravatar.cc/150?u=dasun"
+    },
+    {
+      "id": "u2",
+      "name": "Savindu Bandara",
+      "email": "savindu@example.com",
+      "role": "Senior Reviewer",
+      "avatarUrl": "https://i.pravatar.cc/150?u=savindu"
+    },
+    {
+      "id": "u3",
+      "name": "Kushan Hansika",
+      "email": "kushan@example.com",
+      "role": "Tech Lead",
+      "avatarUrl": "https://i.pravatar.cc/150?u=kushan"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Initialize NgRx Store",
+      "description": "Set up the boilerplate for Actions, Reducers, and Effects to handle task state management as the single source of truth.",
+      "priority": "high",
+      "status": "in-progress",
+      "dueDate": "2026-01-27T17:00:00.000Z",
+      "assigneeId": "u1"
+    },
+    {
+      "id": "t2",
+      "title": "Implement Drag & Drop",
+      "description": "Use @angular/cdk/drag-drop to allow moving cards between the 'To Do' and 'Done' columns.",
+      "priority": "medium",
+      "status": "todo",
+      "dueDate": "2026-01-29T12:00:00.000Z",
+      "assigneeId": "u1"
+    },
+    {
+      "id": "t3",
+      "title": "Design Task Card Component",
+      "description": "Create the visual card component using the Visma design guidelines. Must include delete button and priority badges.",
+      "priority": "low",
+      "status": "todo",
+      "dueDate": "2026-01-30T09:00:00.000Z",
+      "assigneeId": "u2"
+    },
+    {
+      "id": "t4",
+      "title": "Setup Project Structure",
+      "description": "Initial commit with Angular CLI, Tailwind CSS configuration, and folder architecture.",
+      "priority": "high",
+      "status": "done",
+      "dueDate": "2026-01-25T10:00:00.000Z",
+      "assigneeId": "u1"
+    },
+    {
+      "id": "t5",
+      "title": "Configure json-server",
+      "description": "Create db.json and ensure it serves data correctly on port 3000.",
+      "priority": "low",
+      "status": "done",
+      "dueDate": "2026-01-25T14:30:00.000Z",
+      "assigneeId": "u3"
+    }
+  ]
+}

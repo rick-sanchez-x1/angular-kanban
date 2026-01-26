@@ -1,13 +1,37 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [ButtonModule, CardModule, ToastModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'kanban-board';
+  count = 0;
+
+  constructor(private messageService: MessageService) { }
+
+  increment() {
+    this.count++;
+  }
+
+  decrement() {
+    if (this.count <= 0) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warning',
+        detail: 'Count cannot go below 0',
+      });
+      return;
+    }
+    this.count--;
+  }
+
+  reset() {
+    this.count = 0;
+  }
 }

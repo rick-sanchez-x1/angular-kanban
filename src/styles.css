@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.p-toast-bottom-right {
+  @apply !right-6 !bottom-6;
+}
+
+.p-toast .p-toast-message {
+  @apply !bg-white !border !border-slate-200 !shadow-2xl !rounded-2xl !backdrop-blur-sm !opacity-95;
+}
+
+.p-toast .p-toast-message .p-toast-message-content {
+  @apply !p-4 !items-center;
+}
+
+.p-toast .p-toast-message .p-toast-summary {
+  @apply !font-bold !text-slate-800 !text-sm;
+}
+
+.p-toast .p-toast-message .p-toast-detail {
+  @apply !text-slate-500 !text-sm !mt-1;
+}
+
+/* Success Variant */
+.p-toast .p-toast-message.p-toast-message-success {
+  @apply !border-l-4 !border-l-emerald-500;
+}
+.p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon {
+  @apply !text-emerald-500;
+}
+
+/* Info Variant */
+.p-toast .p-toast-message.p-toast-message-info {
+  @apply !border-l-4 !border-l-blue-500;
+}
+.p-toast .p-toast-message.p-toast-message-info .p-toast-message-icon {
+  @apply !text-blue-500;
+}
+
+/* Warning Variant */
+.p-toast .p-toast-message.p-toast-message-warn {
+  @apply !border-l-4 !border-l-amber-500;
+}
+.p-toast .p-toast-message.p-toast-message-warn .p-toast-message-icon {
+  @apply !text-amber-500;
+}
+
+/* Error Variant */
+.p-toast .p-toast-message.p-toast-message-error {
+  @apply !border-l-4 !border-l-rose-500;
+}
+.p-toast .p-toast-message.p-toast-message-error .p-toast-message-icon {
+  @apply !text-rose-500;
+}
