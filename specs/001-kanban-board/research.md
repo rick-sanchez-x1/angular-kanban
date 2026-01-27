@@ -13,6 +13,7 @@
 - **PrimeNG**: Mandated. Theme is already configured in `angular.json`.
 - **Tailwind**: Used for layout (Flexbox/Grid), spacing, and typography.
 - **Integration**: PrimeNG components will be used for complex interactive elements (Dialogs, Inputs). Tailwind will handle the board layout and card styling.
+- **UX Fix**: Custom CSS applied to `.cdk-drag-placeholder` and `.cdk-drag-preview` to resolve visual duplication issues during drag-and-drop operations and ensure smooth snapping.
 
 ## Persistence & Data
 **Decision**: Primary: `db.json` (HTTP); Secondary: LocalStorage (Theme & Cache)
