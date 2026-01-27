@@ -28,7 +28,7 @@
       "title": "Initialize NgRx Store",
       "description": "Set up the boilerplate for Actions, Reducers, and Effects to handle task state management as the single source of truth.",
       "priority": "high",
-      "status": "done",
+      "status": "inprogress",
       "dueDate": "2026-01-27T17:00:00.000Z",
       "assignedUserId": "u1"
     },
@@ -37,7 +37,7 @@
       "title": "Implement Drag & Drop",
       "description": "Use @angular/cdk/drag-drop to allow moving cards between the 'To Do' and 'Done' columns.",
       "priority": "medium",
-      "status": "inprogress",
+      "status": "todo",
       "dueDate": "2026-01-29T12:00:00.000Z",
       "assignedUserId": "u1"
     },
@@ -73,7 +73,7 @@
       "title": "Implement Task Creation Form",
       "description": "Build a form component to add new tasks with fields for title, description, priority, due date, and assigned user.",
       "priority": "medium",
-      "status": "inprogress",
+      "status": "done",
       "dueDate": "2026-01-31T11:00:00.000Z",
       "assignedUserId": "u2"
     }

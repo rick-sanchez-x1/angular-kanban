@@ -1,4 +1,4 @@
-# Gemini Context File
+﻿# Gemini Context File
 
 **Project**: kanban-board
 **Last Updated**: 2026-01-27
