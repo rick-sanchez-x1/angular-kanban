@@ -26,6 +26,10 @@ export class TaskCardComponent {
       message: `Are you sure you want to delete "${this.task.title}"?`,
       header: 'Confirm Deletion',
       icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Delete',
+      rejectLabel: 'Cancel',
+      acceptButtonStyleClass: 'p-button-danger p-button-text',
+      rejectButtonStyleClass: 'p-button-secondary p-button-text',
       accept: () => {
         this.store.dispatch(KanbanActions.deleteTask({ taskId: this.task.id }));
       },

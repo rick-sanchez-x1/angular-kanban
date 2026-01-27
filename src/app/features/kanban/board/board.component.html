@@ -26,7 +26,7 @@
       [header]="selectedTask ? 'Edit Task' : 'New Task'"
       [(visible)]="displayTaskForm"
       [modal]="true"
-      styleClass="w-full max-w-lg"
+      styleClass="w-full max-w-md"
       [draggable]="false"
       [resizable]="false"
       appendTo="body"
@@ -40,11 +40,9 @@
       ></app-task-form>
     </p-dialog>
 
-    <p-confirmDialog></p-confirmDialog>
+    <p-confirmDialog styleClass="w-full max-w-sm"></p-confirmDialog>
 
     <div *ngIf="loading()" class="flex justify-center py-20">
-      <!-- Loading spinner -->
-
       <div
         class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"
       ></div>

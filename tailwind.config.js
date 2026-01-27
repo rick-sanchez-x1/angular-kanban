@@ -11,7 +11,7 @@ export const theme = {
       }
     },
     fontFamily: {
-      sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+      sans: ['Geist', 'Inter', 'ui-sans-serif', 'system-ui'],
     },
   },
 };
