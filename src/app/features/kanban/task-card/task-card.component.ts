@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ConfirmationService } from 'primeng/api';
-import { Task } from '../../../models/kanban.model';
+import { Task, User } from '../../../models/kanban.model';
 import { KanbanActions } from '../../../state/kanban.actions';
+import { selectUserEntities } from '../../../state/kanban.selectors';
 
 @Component({
   selector: 'app-task-card',
@@ -11,6 +12,8 @@ import { KanbanActions } from '../../../state/kanban.actions';
 export class TaskCardComponent {
   @Input({ required: true }) task!: Task;
   @Output() edit = new EventEmitter<Task>();
+
+  userEntities = this.store.selectSignal(selectUserEntities);
 
   constructor(
     private store: Store,
@@ -27,6 +30,18 @@ export class TaskCardComponent {
         this.store.dispatch(KanbanActions.deleteTask({ taskId: this.task.id }));
       },
     });
+  }
+
+  get assignedUser(): User | undefined {
+    return this.task.assignedUserId
+      ? this.userEntities()[this.task.assignedUserId]
+      : undefined;
+  }
+
+  get initials(): string {
+    return (
+      this.assignedUser?.name.split(' ').map((name) => name.charAt(0))[0] || ''
+    );
   }
 
   get priorityColor(): string {

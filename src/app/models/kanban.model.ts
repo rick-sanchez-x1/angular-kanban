@@ -4,7 +4,7 @@ export type TaskStatus = 'todo' | 'inprogress' | 'done';
 export interface User {
   id: string;
   name: string;
-  avatarUrl?: string;
+  avatarUrl: string;
   email: string;
 }
 

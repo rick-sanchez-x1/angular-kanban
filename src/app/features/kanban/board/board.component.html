@@ -22,122 +22,64 @@
       </div>
     </header>
 
-        <p-dialog
+    <p-dialog
+      [header]="selectedTask ? 'Edit Task' : 'New Task'"
+      [(visible)]="displayTaskForm"
+      [modal]="true"
+      styleClass="w-full max-w-lg"
+      [draggable]="false"
+      [resizable]="false"
+      appendTo="body"
+    >
+      <app-task-form
+        *ngIf="displayTaskForm"
+        [task]="selectedTask"
+        [users]="users()"
+        (save)="onSaveTask($event)"
+        (cancel)="displayTaskForm = false"
+      ></app-task-form>
+    </p-dialog>
 
-          [header]="selectedTask ? 'Edit Task' : 'New Task'"
+    <p-confirmDialog></p-confirmDialog>
 
-          [(visible)]="displayTaskForm"
+    <div *ngIf="loading()" class="flex justify-center py-20">
+      <!-- Loading spinner -->
 
-          [modal]="true"
+      <div
+        class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"
+      ></div>
+    </div>
 
-          styleClass="w-full max-w-lg"
+    <div *ngIf="!loading()" class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-6">
+      <app-column
+        title="To Do"
+        id="todo"
+        status="todo"
+        [tasks]="todoTasks()"
+        [connectedTo]="['inprogress', 'done']"
+        (dropped)="drop($event)"
+        (editTask)="onEditTask($event)"
+      ></app-column>
 
-          [draggable]="false"
+      <app-column
+        title="In Progress"
+        id="inprogress"
+        status="inprogress"
+        [tasks]="inprogressTasks()"
+        [connectedTo]="['todo', 'done']"
+        (dropped)="drop($event)"
+        (editTask)="onEditTask($event)"
+      ></app-column>
 
-          [resizable]="false"
-
-          appendTo="body"
-
-        >
-
-          <app-task-form
-
-            *ngIf="displayTaskForm"
-
-            [task]="selectedTask"
-
-            [users]="users()"
-
-            (save)="onSaveTask($event)"
-
-            (cancel)="displayTaskForm = false"
-
-          ></app-task-form>
-
-        </p-dialog>
-
-    
-
-        <p-confirmDialog></p-confirmDialog>
-
-    
-
-        <div *ngIf="loading()" class="flex justify-center py-20">
-
-          <!-- Loading spinner -->
-
-          <div
-
-            class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"
-
-          ></div>
-
-        </div>
-
-    
-
-        <div *ngIf="!loading()" class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-6">
-
-          <app-column
-
-            title="To Do"
-
-            id="todo"
-
-            status="todo"
-
-            [tasks]="todoTasks()"
-
-            [connectedTo]="['inprogress', 'done']"
-
-            (dropped)="drop($event)"
-
-            (editTask)="onEditTask($event)"
-
-          ></app-column>
-
-    
-
-          <app-column
-
-            title="In Progress"
-
-            id="inprogress"
-
-            status="inprogress"
-
-            [tasks]="inprogressTasks()"
-
-            [connectedTo]="['todo', 'done']"
-
-            (dropped)="drop($event)"
-
-            (editTask)="onEditTask($event)"
-
-          ></app-column>
-
-    
-
-          <app-column
-
-            title="Done"
-
-            id="done"
-
-            status="done"
-
-            [tasks]="doneTasks()"
-
-            [connectedTo]="['todo', 'inprogress']"
-
-            (dropped)="drop($event)"
-
-            (editTask)="onEditTask($event)"
-
-          ></app-column>
-
-        </div>
-
-    
+      <app-column
+        title="Done"
+        id="done"
+        status="done"
+        [tasks]="doneTasks()"
+        [connectedTo]="['todo', 'inprogress']"
+        (dropped)="drop($event)"
+        (editTask)="onEditTask($event)"
+      ></app-column>
+    </div>
   </div>
 </div>

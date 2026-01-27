@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { KanbanState } from './kanban.reducer';
+import { User } from '../models/kanban.model';
 
 export const selectKanbanState = createFeatureSelector<KanbanState>('kanban');
 
@@ -27,3 +28,10 @@ export const selectTasksByStatus = (status: string) =>
   createSelector(selectAllTasks, (tasks) =>
     tasks.filter((task) => task.status === status),
   );
+
+export const selectUserEntities = createSelector(selectAllUsers, (users) =>
+  users.reduce(
+    (entities, user) => ({ ...entities, [user.id]: user }),
+    {} as Record<string, User>,
+  ),
+);

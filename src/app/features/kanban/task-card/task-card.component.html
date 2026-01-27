@@ -24,11 +24,19 @@
 
   <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
     <span *ngIf="task.dueDate">{{ task.dueDate | date: 'MMM d' }}</span>
-    <div
-      *ngIf="task.assignedUserId"
-      class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600"
-    >
-      {{ task.assignedUserId }}
+     <div *ngIf="assignedUser" class="flex items-center" [title]="assignedUser.name">
+      <img
+        *ngIf="assignedUser.avatarUrl"
+        [src]="assignedUser.avatarUrl"
+        [alt]="assignedUser.name"
+        class="w-7 h-7 rounded-full object-cover border border-slate-200 dark:border-slate-700"
+      />
+      <div
+        *ngIf="!assignedUser.avatarUrl"
+        class="w-7 h-7 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-600 dark:text-slate-300"
+      >
+        {{ initials }}
+      </div>
     </div>
   </div>
 </div>
