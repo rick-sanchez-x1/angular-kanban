@@ -11,7 +11,7 @@ export const theme = {
       }
     },
     fontFamily: {
-      sans: ['ManRope', 'ui-sans-serif', 'system-ui'],
+      sans: ['Inter', 'ui-sans-serif', 'system-ui'],
     },
   },
 };

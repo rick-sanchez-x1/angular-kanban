@@ -5,6 +5,7 @@ import { Task } from '../../../models/kanban.model';
 @Component({
   selector: 'app-column',
   templateUrl: './column.component.html',
+  host: { class: 'block' },
 })
 export class ColumnComponent {
   @Input({ required: true }) title!: string;

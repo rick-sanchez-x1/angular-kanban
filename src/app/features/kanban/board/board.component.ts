@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { KanbanActions } from '../../../state/kanban.actions';
@@ -9,21 +9,21 @@ import {
   selectKanbanError,
 } from '../../../state/kanban.selectors';
 import { Task, TaskStatus, User } from '../../../models/kanban.model';
-import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { MessageService } from 'primeng/api';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
 })
 export class BoardComponent implements OnInit {
-  todoTasks$: Observable<Task[]>;
-  inprogressTasks$: Observable<Task[]>;
-  doneTasks$: Observable<Task[]>;
-  users$: Observable<User[]>;
-  loading$: Observable<boolean>;
-  error$: Observable<string | null>;
+  todoTasks = this.store.selectSignal(selectTasksByStatus('todo'));
+  inprogressTasks = this.store.selectSignal(selectTasksByStatus('inprogress'));
+  doneTasks = this.store.selectSignal(selectTasksByStatus('done'));
+  users = this.store.selectSignal(selectAllUsers);
+  loading = this.store.selectSignal(selectKanbanLoading);
+  error = this.store.selectSignal(selectKanbanError);
 
   displayTaskForm = false;
   selectedTask?: Task;
@@ -31,21 +31,12 @@ export class BoardComponent implements OnInit {
   constructor(
     private store: Store,
     private messageService: MessageService,
-  ) {
-    this.todoTasks$ = this.store.select(selectTasksByStatus('todo'));
-    this.inprogressTasks$ = this.store.select(
-      selectTasksByStatus('inprogress'),
-    );
-    this.doneTasks$ = this.store.select(selectTasksByStatus('done'));
-    this.users$ = this.store.select(selectAllUsers);
-    this.loading$ = this.store.select(selectKanbanLoading);
-    this.error$ = this.store.select(selectKanbanError);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(KanbanActions.loadInitialData());
 
-    this.error$.subscribe((error) => {
+    toObservable(this.error).subscribe((error) => {
       if (error) {
         this.messageService.add({
           severity: 'error',

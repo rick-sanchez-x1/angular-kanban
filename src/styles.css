@@ -4,12 +4,163 @@
 
 html,
 body {
-  height: 100%;
-  margin: 0;
+  @apply h-full m-0;
 }
 
 body {
-  font-family: 'ManRope', ui-sans-serif;
+  @apply font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-950;
+}
+
+/* PrimeNG Dark Mode & Font Fixes */
+.p-component,
+.p-inputtext,
+.p-button,
+.p-dropdown,
+.p-dialog,
+.p-datepicker {
+  font-family: 'ManRope', sans-serif !important;
+}
+
+.p-component {
+  @apply !text-sm;
+}
+
+/* Dialog Dark Mode */
+.dark .p-dialog .p-dialog-header {
+  @apply !bg-slate-900 !text-slate-100 !border-slate-800 !p-5;
+}
+
+.dark .p-dialog .p-dialog-content {
+  @apply !bg-slate-900 !text-slate-100 !px-5 !py-2;
+}
+
+.dark .p-dialog .p-dialog-footer {
+  @apply !bg-slate-900 !border-slate-800;
+}
+
+/* Dropdown Panel Dark Mode */
+.dark .p-dropdown-panel {
+  @apply !bg-slate-900 !border-slate-800 !shadow-2xl;
+}
+
+.dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  @apply !text-slate-300;
+}
+
+.dark
+  .p-dropdown-panel
+  .p-dropdown-items
+  .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+  @apply !bg-slate-800 !text-slate-100;
+}
+
+.dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  @apply !bg-blue-600 !text-white;
+}
+
+/* Datepicker Dark Mode */
+.dark .p-datepicker {
+  @apply !bg-slate-900 !border-slate-800 !text-slate-100;
+}
+
+.dark .p-datepicker:not(.p-datepicker-inline) {
+  @apply !shadow-2xl;
+}
+
+.dark .p-datepicker .p-datepicker-header {
+  @apply !bg-slate-900 !border-slate-800 !text-slate-100;
+}
+
+.dark .p-datepicker table td > span {
+  @apply !text-slate-300;
+}
+
+.dark .p-datepicker table td > span:not(.p-highlight):not(.p-disabled):hover {
+  @apply !bg-slate-800 !text-slate-100;
+}
+
+.dark .p-datepicker table td.p-datepicker-today > span {
+  @apply !bg-slate-800 !text-blue-400;
+}
+
+/* Input Styles */
+.p-inputtext {
+  @apply !px-3 !py-2 w-full border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors !important;
+}
+
+.p-inputtext:enabled:focus {
+  @apply border-blue-500 ring-2 ring-blue-100 dark:ring-blue-900 !important;
+}
+
+.p-inputtextarea {
+  @apply w-full rounded-lg !important;
+}
+
+.p-dropdown {
+  @apply w-full border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 transition-colors !important;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  @apply border-blue-500 ring-2 ring-blue-100 dark:ring-blue-900 shadow-none !important;
+}
+
+.p-dropdown .p-dropdown-label {
+  @apply bg-transparent text-sm text-slate-700 dark:text-slate-200 !important;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  @apply !px-3 !py-2 text-sm !important;
+}
+
+.p-button {
+  @apply !px-4 !py-2 !text-sm;
+}
+
+.p-button.p-button-sm {
+  @apply !text-xs !px-3 !py-1.5;
+}
+
+.p-button.p-button-icon-only {
+  @apply !w-10 !h-10 !p-0;
+}
+
+.p-button.p-button-sm.p-button-icon-only {
+  @apply !w-7 !h-7;
+}
+
+/* Dialog Compact */
+.p-dialog .p-dialog-header {
+  @apply !p-5;
+}
+
+.p-dialog .p-dialog-content {
+  @apply !px-5 !py-2;
+}
+
+/* Datepicker Compact */
+.p-datepicker {
+  @apply !w-72 !min-w-0;
+}
+
+.p-datepicker table td {
+  @apply !p-0.5;
+}
+
+.p-datepicker table td > span {
+  @apply !w-8 !h-8 !text-sm;
+}
+
+.p-datepicker .p-datepicker-header {
+  @apply !p-2;
+}
+
+.p-datepicker table th {
+  @apply !p-2 font-medium text-sm text-slate-500 dark:text-slate-400 !important;
+}
+
+/* Toast Compact */
+.p-toast .p-toast-message .p-toast-message-content {
+  @apply !py-3 !px-4;
 }
 
 .p-toast-bottom-right {
@@ -17,52 +168,50 @@ body {
 }
 
 .p-toast .p-toast-message {
-  @apply !bg-white !border !border-slate-200 !shadow-2xl !rounded-2xl !backdrop-blur-sm !opacity-95;
-}
-
-.p-toast .p-toast-message .p-toast-message-content {
-  @apply !p-4 !items-center;
+  @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl backdrop-blur-sm opacity-95 !important;
 }
 
 .p-toast .p-toast-message .p-toast-summary {
-  @apply !font-bold !text-slate-800 !text-sm;
+  @apply font-bold text-slate-800 dark:text-slate-100 text-sm !important;
 }
 
 .p-toast .p-toast-message .p-toast-detail {
-  @apply !text-slate-500 !text-sm !mt-1;
+  @apply text-slate-500 dark:text-slate-400 text-sm mt-1 !important;
 }
 
 /* Success Variant */
 .p-toast .p-toast-message.p-toast-message-success {
-  @apply !border-l-4 !border-l-emerald-500;
+  @apply border-l-4 border-l-emerald-500 !important;
 }
 .p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon {
-  @apply !text-emerald-500;
+  @apply text-emerald-500 !important;
 }
 
 /* Info Variant */
 .p-toast .p-toast-message.p-toast-message-info {
-  @apply !border-l-4 !border-l-blue-500;
+  @apply border-l-4 border-l-blue-500 !important;
 }
 .p-toast .p-toast-message.p-toast-message-info .p-toast-message-icon {
-  @apply !text-blue-500;
+  @apply text-blue-500 !important;
 }
 
 /* Warning Variant */
 .p-toast .p-toast-message.p-toast-message-warn {
-  @apply !border-l-4 !border-l-amber-500;
-}
-.p-toast .p-toast-message.p-toast-message-warn .p-toast-message-icon {
-  @apply !text-amber-500;
+  @apply border-l-4 border-l-amber-500 !important;
 }
 
-/* CDK Drag & Drop Styles */
+.p-toast .p-toast-message.p-toast-message-warn .p-toast-message-icon {
+  @apply text-amber-500 !important;
+}
+
+/* CDK Drag and Drop Fixes */
 .cdk-drag-preview {
   box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 0.5rem;
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  @apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 !important;
 }
 
 .cdk-drag-placeholder {

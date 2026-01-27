@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 .gemini/
 prompt.md
+db.json
