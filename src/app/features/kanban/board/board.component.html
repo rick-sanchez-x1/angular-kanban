@@ -1,0 +1,84 @@
+<div class="p-6 min-h-screen bg-white dark:bg-slate-950 transition-colors">
+  <div class="max-w-7xl mx-auto">
+    <header class="flex justify-between items-center mb-8">
+      <div>
+        <h1
+          class="text-3xl font-black text-slate-900 dark:text-white tracking-tight"
+        >
+          Kanban Board
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400">
+          Manage your tasks efficiently
+        </p>
+      </div>
+      <div class="flex gap-3">
+        <app-theme-toggle></app-theme-toggle>
+        <button
+          pButton
+          label="Create Task"
+          icon="pi pi-plus"
+          (click)="showCreateTask()"
+        ></button>
+      </div>
+    </header>
+
+    <p-dialog
+      [header]="selectedTask ? 'Edit Task' : 'New Task'"
+      [(visible)]="displayTaskForm"
+      [modal]="true"
+      [style]="{ width: '500px' }"
+      [draggable]="false"
+      [resizable]="false"
+      appendTo="body"
+    >
+      <app-task-form
+        *ngIf="displayTaskForm"
+        [task]="selectedTask"
+        [users]="(users$ | async) || []"
+        (save)="onSaveTask($event)"
+        (cancel)="displayTaskForm = false"
+      ></app-task-form>
+    </p-dialog>
+
+    <p-confirmDialog></p-confirmDialog>
+
+    <div *ngIf="loading$ | async" class="flex justify-center py-20">
+      <!-- Loading spinner -->
+      <div
+        class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"
+      ></div>
+    </div>
+
+    <div *ngIf="!(loading$ | async)" class="flex gap-6 overflow-x-auto pb-6">
+      <app-column
+        title="To Do"
+        id="todo"
+        status="todo"
+        [tasks]="(todoTasks$ | async) || []"
+        [connectedTo]="['inprogress', 'done']"
+        (dropped)="drop($event)"
+        (editTask)="onEditTask($event)"
+      ></app-column>
+
+      <app-column
+        title="In Progress"
+        id="inprogress"
+        status="inprogress"
+        [tasks]="(inprogressTasks$ | async) || []"
+        [connectedTo]="['todo', 'done']"
+        (dropped)="drop($event)"
+        (editTask)="onEditTask($event)"
+      ></app-column>
+
+      <app-column
+        title="Done"
+        id="done"
+        status="done"
+        [tasks]="(doneTasks$ | async) || []"
+        [connectedTo]="['todo', 'inprogress']"
+        (dropped)="drop($event)"
+        (editTask)="onEditTask($event)"
+      ></app-column>
+    </div>
+  </div>
+</div>

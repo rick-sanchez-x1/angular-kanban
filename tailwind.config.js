@@ -1,14 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './src/**/*.{html,ts}'
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-      },
+export const content = ['./src/**/*.{html,ts}'];
+export const darkMode = 'class';
+export const theme = {
+  extend: {
+    colors: {
+      kanban: {
+        todo: '#3b82f6', // Blue-500
+        inprogress: '#f59e0b', // Amber-500
+        done: '#10b981', // Emerald-500
+      }
+    },
+    fontFamily: {
+      sans: ['ManRope', 'ui-sans-serif', 'system-ui'],
     },
   },
-  plugins: [],
 };
+export const plugins = [];

@@ -1,0 +1,6 @@
+- Use NgModule's instead of standalone components.
+- Use NgRx for state management.
+- Use reactive forms instead of template-driven forms.
+- Implement optimistic updates, persistence in local storage etc.
+- Use signal-based architecture where applicable. (Note that I am in Angular 17)
+- Use PrimeNG for UI components.

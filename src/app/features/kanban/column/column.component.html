@@ -1,0 +1,40 @@
+<div
+  class="flex flex-col w-80 min-h-[500px] bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800"
+>
+  <!-- Header -->
+  <div
+    class="flex items-center justify-between p-4 border-b-2"
+    [ngClass]="{
+      'border-blue-500': status === 'todo',
+      'border-amber-500': status === 'inprogress',
+      'border-emerald-500': status === 'done',
+    }"
+  >
+    <div class="flex items-center gap-2">
+      <h2 class="font-bold text-slate-700 dark:text-slate-200">{{ title }}</h2>
+      <span
+        class="bg-slate-200 dark:bg-slate-800 text-slate-500 text-xs font-bold px-2 py-0.5 rounded-full"
+      >
+        {{ tasks.length }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Task List -->
+  <div
+    [id]="id"
+    cdkDropList
+    [cdkDropListData]="tasks"
+    [cdkDropListConnectedTo]="connectedTo"
+    class="flex-1 p-3 flex flex-col gap-3 overflow-y-auto"
+    (cdkDropListDropped)="dropped.emit($event)"
+  >
+    <app-task-card
+      *ngFor="let task of tasks"
+      [task]="task"
+      cdkDrag
+      [cdkDragData]="task"
+      (edit)="editTask.emit($event)"
+    ></app-task-card>
+  </div>
+</div>
