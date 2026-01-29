@@ -41,14 +41,14 @@
       "status": "done",
       "dueDate": "2026-01-30T09:00:00.000Z",
       "assignedUserId": "u2",
-      "position": 1
+      "position": 0
     },
     {
       "id": "t4",
       "title": "Setup Project Structure",
       "description": "Initial commit with Angular CLI, Tailwind CSS configuration, and folder architecture.",
       "priority": "high",
-      "status": "done",
+      "status": "inprogress",
       "dueDate": "2026-01-25T10:00:00.000Z",
       "assignedUserId": "u1",
       "position": 0
@@ -61,7 +61,7 @@
       "status": "inprogress",
       "dueDate": "2026-01-29T18:30:00.000Z",
       "assignedUserId": "u3",
-      "position": 0
+      "position": 1
     },
     {
       "id": "t6",
@@ -71,7 +71,7 @@
       "status": "todo",
       "dueDate": "2026-01-31T11:00:00.000Z",
       "assignedUserId": "u2",
-      "position": 1
+      "position": 0
     },
     {
       "id": "fd2a9f95-ea4d-4a56-a7b7-166a19113315",
@@ -81,7 +81,17 @@
       "status": "todo",
       "dueDate": "2026-01-27T18:30:00.000Z",
       "assignedUserId": "u1",
-      "position": 0
+      "position": 1
+    },
+    {
+      "id": "6ead82fb-b5de-42e1-a33d-b03d38450b65",
+      "title": "uu",
+      "description": "kokl",
+      "priority": "medium",
+      "status": "todo",
+      "dueDate": null,
+      "assignedUserId": null,
+      "position": 3
     }
   ]
 }

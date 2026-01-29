@@ -35,7 +35,7 @@ export class BoardComponent implements OnInit {
   constructor(
     private store: Store,
     private messageService: MessageService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(KanbanActions.loadInitialData());
@@ -86,9 +86,7 @@ export class BoardComponent implements OnInit {
       const status = taskData.status || 'todo';
       const tasks = this.getTasksByStatus(status);
       const maxPosition =
-        tasks.length > 0
-          ? Math.max(...tasks.map((t) => t.position ?? 0))
-          : -1;
+        tasks.length > 0 ? Math.max(...tasks.map((t) => t.position ?? 0)) : -1;
 
       const newTask = {
         ...taskData,
