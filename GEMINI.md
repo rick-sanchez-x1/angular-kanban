@@ -1,7 +1,7 @@
 ﻿# Gemini Context File
 
 **Project**: kanban-board
-**Last Updated**: 2026-01-27
+**Last Updated**: 2026-01-29
 
 ## Technology Stack
 - **Language**: Angular 17 / TypeScript 5.2+
