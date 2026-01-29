@@ -77,6 +77,13 @@ export const kanbanReducer = createReducer(
     };
   }),
 
+  // Reorder Tasks Failure (Rollback)
+  on(KanbanActions.reorderTasksFailure, (state, { previousTasks }) => ({
+    ...state,
+    tasks: previousTasks,
+    loading: false,
+  })),
+
   // Delete Task
   on(KanbanActions.deleteTaskSuccess, (state, { taskId }) => ({
     ...state,

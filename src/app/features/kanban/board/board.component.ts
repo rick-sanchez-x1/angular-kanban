@@ -11,6 +11,7 @@ import {
   selectKanbanLoading,
   selectAllUsers,
   selectKanbanError,
+  selectAllTasks,
 } from '../../../state/kanban.selectors';
 import { Task, TaskStatus } from '../../../models/kanban.model';
 import { v4 as uuidv4 } from 'uuid';
@@ -25,6 +26,7 @@ export class BoardComponent implements OnInit {
   todoTasks = this.store.selectSignal(selectTasksByStatus('todo'));
   inprogressTasks = this.store.selectSignal(selectTasksByStatus('inprogress'));
   doneTasks = this.store.selectSignal(selectTasksByStatus('done'));
+  allTasks = this.store.selectSignal(selectAllTasks);
   users = this.store.selectSignal(selectAllUsers);
   loading = this.store.selectSignal(selectKanbanLoading);
   error = this.store.selectSignal(selectKanbanError);
@@ -106,6 +108,8 @@ export class BoardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Task[]>): void {
+    const previousTasks = this.allTasks();
+
     if (event.previousContainer === event.container) {
       const tasks = [...event.container.data];
       moveItemInArray(tasks, event.previousIndex, event.currentIndex);
@@ -115,7 +119,12 @@ export class BoardComponent implements OnInit {
         position: index,
       }));
 
-      this.store.dispatch(KanbanActions.reorderTasks({ tasks: updatedTasks }));
+      this.store.dispatch(
+        KanbanActions.reorderTasks({
+          tasks: updatedTasks,
+          previousTasks: previousTasks,
+        }),
+      );
     } else {
       const newStatus = event.container.id as TaskStatus;
 
@@ -146,6 +155,7 @@ export class BoardComponent implements OnInit {
       this.store.dispatch(
         KanbanActions.reorderTasks({
           tasks: [...updatedSourceTasks, ...updatedTargetTasks],
+          previousTasks: previousTasks,
         }),
       );
     }

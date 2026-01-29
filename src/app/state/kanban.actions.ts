@@ -22,9 +22,9 @@ export const KanbanActions = createActionGroup({
 
     'Move Task': props<{ task: Task; newStatus: string }>(),
 
-    'Reorder Tasks': props<{ tasks: Task[] }>(),
+    'Reorder Tasks': props<{ tasks: Task[]; previousTasks: Task[] }>(),
     'Reorder Tasks Success': props<{ tasks: Task[] }>(),
-    'Reorder Tasks Failure': props<{ error: string }>(),
+    'Reorder Tasks Failure': props<{ error: string; previousTasks: Task[] }>(),
 
     'Add Subtask': props<{ taskId: string; title: string }>(),
     'Update Subtask': props<{

@@ -63,13 +63,18 @@ export class KanbanEffects {
   reorderTasks$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(KanbanActions.reorderTasks),
-      mergeMap(({ tasks }) =>
+      mergeMap(({ tasks, previousTasks }) =>
         forkJoin(tasks.map((task) => this.kanbanService.updateTask(task))).pipe(
           map((updatedTasks) =>
             KanbanActions.reorderTasksSuccess({ tasks: updatedTasks }),
           ),
           catchError((error) =>
-            of(KanbanActions.reorderTasksFailure({ error: error.message })),
+            of(
+              KanbanActions.reorderTasksFailure({
+                error: error.message,
+                previousTasks,
+              }),
+            ),
           ),
         ),
       ),
