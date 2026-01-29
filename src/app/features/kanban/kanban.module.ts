@@ -9,6 +9,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
@@ -37,6 +38,7 @@ const routes: Routes = [{ path: '', component: BoardComponent }];
     DropdownModule,
     CalendarModule,
     ButtonModule,
+    CheckboxModule,
     DialogModule,
     ConfirmDialogModule,
     ComponentsModule,

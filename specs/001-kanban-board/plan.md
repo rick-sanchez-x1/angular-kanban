@@ -7,7 +7,7 @@
 
 ## Summary
 
-Implement a production-ready Kanban board using Angular 17. The solution will feature a 3-column layout (To Do, In Progress, Done) with drag-and-drop capabilities. State management will be handled by NgRx for global consistency and optimistic updates, while local component state will leverage Angular Signals. The UI will be built with PrimeNG components styled via Tailwind CSS, ensuring a responsive and theme-aware (Light/Dark) experience. Data will be persisted to a mock backend (`db.json`) via HTTP, with local storage used for theme preferences.
+Implement a production-ready Kanban board using Angular 17. The solution will feature a 3-column layout (To Do, In Progress, Done) with drag-and-drop capabilities and persistent task ordering within columns. State management will be handled by NgRx for global consistency and optimistic updates, while local component state will leverage Angular Signals. The UI will be built with PrimeNG components styled via Tailwind CSS, ensuring a responsive and theme-aware (Light/Dark) experience. Data will be persisted to a mock backend (`db.json`) via HTTP, with local storage used for theme preferences.
 
 ## Technical Context
 

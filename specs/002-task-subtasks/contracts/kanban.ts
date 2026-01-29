@@ -22,6 +22,7 @@ export interface Task {
   status: TaskStatus;
   dueDate?: string; // ISO Date string
   assignedUserId?: string;
+  position: number;
   subtasks?: Subtask[];
 }
 

@@ -107,6 +107,70 @@
     </div>
   </div>
 
+  <div class="field mt-2">
+    <div class="flex justify-between items-center mb-1.5">
+      <label
+        class="block text-sm font-semibold text-slate-700 dark:text-slate-300"
+        >Subtasks</label
+      >
+      <button
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        label="Add"
+        class="p-button-text p-button-sm"
+        (click)="addSubtask()"
+      ></button>
+    </div>
+
+    <div formArrayName="subtasks" class="flex flex-col gap-2">
+      <div
+        *ngFor="let subtask of subtasks.controls; let i = index"
+        [formGroupName]="i"
+        class="flex items-center gap-2"
+      >
+        <div class="flex-shrink-0">
+          <p-checkbox
+            formControlName="isCompleted"
+            [binary]="true"
+            (onChange)="recalculateStatus()"
+            ariaLabel="Toggle subtask completion"
+          ></p-checkbox>
+        </div>
+        <input
+          type="text"
+          pInputText
+          formControlName="title"
+          placeholder="Subtask title"
+          class="flex-1 p-inputtext-sm"
+          aria-label="Subtask title"
+        />
+        <button
+          type="button"
+          pButton
+          icon="pi pi-trash"
+          class="p-button-danger p-button-text p-button-sm flex-shrink-0 !p-0 !w-8 !h-8"
+          (click)="removeSubtask(i)"
+        ></button>
+      </div>
+    </div>
+
+    <small
+      *ngIf="subtasks.length > 10"
+      class="block mt-2 text-xs text-orange-500 font-medium"
+    >
+      <i class="pi pi-exclamation-triangle mr-1"></i>
+      Consider breaking this into smaller tasks (soft limit of 10 subtasks).
+    </small>
+
+    <div
+      *ngIf="subtasks.length === 0"
+      class="text-xs text-slate-400 dark:text-slate-500 italic py-2 text-center border border-dashed border-slate-200 dark:border-slate-800 rounded"
+    >
+      No subtasks added yet.
+    </div>
+  </div>
+
   <div
     class="flex justify-end gap-3 mt-2 pt-4 border-t border-slate-100 dark:border-slate-800"
   >

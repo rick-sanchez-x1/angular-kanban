@@ -58,8 +58,9 @@
 - [X] T011 [P] [US1] Create BoardComponent container in src/app/features/kanban/board/board.component.ts
 - [X] T012 [P] [US1] Create ColumnComponent for task grouping in src/app/features/kanban/column/column.component.ts
 - [X] T013 [P] [US1] Create TaskCardComponent for board items in src/app/features/kanban/task-card/task-card.component.ts
-- [X] T014 [US1] Implement drag-and-drop logic using `@angular/cdk/drag-drop` in src/app/features/kanban/board/board.component.ts
-- [X] T015 [US1] Implement optimistic update logic for task movement in src/app/state/kanban.effects.ts
+- [X] T014 [US1] Implement drag-and-drop logic with vertical reordering using `@angular/cdk/drag-drop` in src/app/features/kanban/board/board.component.ts
+- [X] T015 [US1] Implement optimistic update logic for task movement and position persistence in src/app/state/kanban.effects.ts
+- [X] T015b [US1] Implement reordering logic for column-specific task arrays in src/app/state/kanban.reducer.ts
 - [X] T016 [US1] Apply Tailwind CSS for column styling (Blue, Amber, Emerald) in src/app/features/kanban/column/column.component.html
 
 **Checkpoint**: Core Kanban movement functional and persistent.

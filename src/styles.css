@@ -253,3 +253,15 @@ body {
 .cdk-drop-list-dragging .cdk-drag {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+/* Subtask Checkbox Visibility */
+.p-checkbox .p-checkbox-box {
+  @apply border-slate-300 dark:border-slate-600 !important;
+}
+
+.p-checkbox:not(.p-checkbox-checked) .p-checkbox-box {
+  @apply bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 !important;
+}
+
+.p-checkbox .p-checkbox-box:hover {
+  @apply border-slate-400 dark:border-slate-500 !important;
+}

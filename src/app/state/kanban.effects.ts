@@ -93,5 +93,5 @@ export class KanbanEffects {
   constructor(
     private actions$: Actions,
     private kanbanService: KanbanService,
-  ) { }
+  ) {}
 }

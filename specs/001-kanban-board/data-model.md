@@ -14,6 +14,7 @@ Represents a single unit of work on the board.
 | `status`         | enum   | Yes      | 'todo', 'inprogress', 'done' | Current column           |
 | `dueDate`        | string | No       | ISO 8601                     | Target completion date   |
 | `assignedUserId` | string | No       | Exists in Users              | FK to User               |
+| `position`       | number | Yes      | >= 0                         | Order within the column  |
 
 ### User
 Represents a team member.

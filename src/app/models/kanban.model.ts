@@ -8,6 +8,12 @@ export interface User {
   email: string;
 }
 
+export interface Subtask {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+}
+
 export interface Task {
   id: string;
   title: string;
@@ -17,4 +23,5 @@ export interface Task {
   dueDate?: string;
   assignedUserId?: string;
   position: number;
+  subtasks?: Subtask[];
 }

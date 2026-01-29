@@ -25,5 +25,13 @@ export const KanbanActions = createActionGroup({
     'Reorder Tasks': props<{ tasks: Task[] }>(),
     'Reorder Tasks Success': props<{ tasks: Task[] }>(),
     'Reorder Tasks Failure': props<{ error: string }>(),
+
+    'Add Subtask': props<{ taskId: string; title: string }>(),
+    'Update Subtask': props<{
+      taskId: string;
+      subtask: { id: string; title: string };
+    }>(),
+    'Delete Subtask': props<{ taskId: string; subtaskId: string }>(),
+    'Toggle Subtask': props<{ taskId: string; subtaskId: string }>(),
   },
 });

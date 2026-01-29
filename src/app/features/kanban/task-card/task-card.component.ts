@@ -60,4 +60,14 @@ export class TaskCardComponent {
         return 'text-gray-600 bg-gray-100';
     }
   }
+
+  get subtaskProgress(): string | null {
+    if (!this.task.subtasks || this.task.subtasks.length === 0) {
+      return null;
+    }
+    const completedCount = this.task.subtasks.filter(
+      (s) => s.isCompleted,
+    ).length;
+    return `${completedCount}/${this.task.subtasks.length}`;
+  }
 }

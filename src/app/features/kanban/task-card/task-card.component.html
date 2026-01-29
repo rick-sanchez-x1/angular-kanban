@@ -22,6 +22,14 @@
     {{ task.description }}
   </p>
 
+  <div
+    *ngIf="subtaskProgress"
+    class="mt-2 flex items-center gap-1.5 text-[10px] font-medium text-slate-500 dark:text-slate-400"
+  >
+    <i class="pi pi-check-square"></i>
+    <span>{{ subtaskProgress }} subtasks</span>
+  </div>
+
   <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
     <span *ngIf="task.dueDate">{{ task.dueDate | date: 'MMM d' }}</span>
     <div

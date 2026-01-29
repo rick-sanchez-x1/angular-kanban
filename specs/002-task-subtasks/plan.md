@@ -12,7 +12,7 @@ This feature allows users to break down tasks into subtasks (max 10) with automa
 **Language/Version**: TypeScript 5.4, Angular 17
 **Primary Dependencies**: NgRx Store/Effects, PrimeNG, Tailwind CSS, uuid
 **Storage**: json-server (db.json)
-**Testing**: ESLint, Prettier (Unit tests via Karma/Jasmine to be added)
+**Testing**: ESLint, Prettier
 **Target Platform**: Web (Modern Browsers)
 **Project Type**: Single Page Application (Web)
 **Performance Goals**: Instant UI feedback (<100ms), API sync <500ms
