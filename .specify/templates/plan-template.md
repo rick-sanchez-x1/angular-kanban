@@ -31,11 +31,7 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- [ ] **Component-Driven**: Does this design leverage PrimeNG/Material components?
-- [ ] **Reactive State**: Is state managed via NgRx/Observables?
-- [ ] **Utility-First**: Is styling planned via Tailwind classes?
-- [ ] **Type Safety**: Are interfaces/types defined for all new data?
-- [ ] **Testability**: Is there a clear plan for unit/integration tests?
+[Gates determined based on constitution file]
 
 ## Project Structure
 
@@ -51,21 +47,52 @@ specs/[###-feature]/
 └── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
 ```
 
-### Source Code (Angular Layout)
+### Source Code (repository root)
+<!--
+  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
+  for this feature. Delete unused options and expand the chosen structure with
+  real paths (e.g., apps/admin, packages/something). The delivered plan must
+  not include Option labels.
+-->
 
 ```text
+# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── app/
-│   ├── components/      # Shared UI components
-│   ├── features/        # Feature modules
-│   ├── state/           # NgRx actions, reducers, selectors, effects
-│   ├── services/        # Data services
-│   └── models/          # TypeScript interfaces/types
-├── assets/
-└── styles.css           # Tailwind imports
+├── models/
+├── services/
+├── cli/
+└── lib/
+
+tests/
+├── contract/
+├── integration/
+└── unit/
+
+# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
+backend/
+├── src/
+│   ├── models/
+│   ├── services/
+│   └── api/
+└── tests/
+
+frontend/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   └── services/
+└── tests/
+
+# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
+api/
+└── [same as backend above]
+
+ios/ or android/
+└── [platform-specific structure: feature modules, UI flows, platform tests]
 ```
 
-**Structure Decision**: Standard Angular feature-based modular structure.
+**Structure Decision**: [Document the selected structure and reference the real
+directories captured above]
 
 ## Complexity Tracking
 
