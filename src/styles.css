@@ -53,7 +53,6 @@ body {
   @apply !py-1 !px-2.5 !text-xs !important;
 }
 
-
 /* Confirm Dialog Specifics */
 .p-confirm-dialog .p-dialog-content {
   @apply flex items-center !important;

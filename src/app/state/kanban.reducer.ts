@@ -42,9 +42,9 @@ export const kanbanReducer = createReducer(
   })),
 
   // Update Task (Optimistic or Success)
-  on(KanbanActions.updateTask, (state, { task }) => ({
+  on(KanbanActions.updateTask, (state, { updatedTask }) => ({
     ...state,
-    tasks: state.tasks.map((t) => (t.id === task.id ? task : t)),
+    tasks: state.tasks.map((t) => (t.id === updatedTask.id ? updatedTask : t)),
   })),
   on(KanbanActions.updateTaskFailure, (state, { originalTask }) => ({
     ...state,
@@ -52,6 +52,18 @@ export const kanbanReducer = createReducer(
       t.id === originalTask.id ? originalTask : t,
     ),
   })),
+
+  // Reorder Tasks (Optimistic)
+  on(KanbanActions.reorderTasks, (state, { tasks }) => {
+    const updatedTaskIds = new Set(tasks.map((t) => t.id));
+    return {
+      ...state,
+      tasks: [
+        ...state.tasks.filter((t) => !updatedTaskIds.has(t.id)),
+        ...tasks,
+      ],
+    };
+  }),
 
   // Delete Task
   on(KanbanActions.deleteTaskSuccess, (state, { taskId }) => ({

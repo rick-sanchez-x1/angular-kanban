@@ -16,4 +16,5 @@ export interface Task {
   status: TaskStatus;
   dueDate?: string;
   assignedUserId?: string;
+  position: number;
 }

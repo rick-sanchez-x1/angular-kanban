@@ -12,7 +12,7 @@ export const KanbanActions = createActionGroup({
     'Add Task Success': props<{ task: Task }>(),
     'Add Task Failure': props<{ error: string }>(),
 
-    'Update Task': props<{ task: Task }>(),
+    'Update Task': props<{ originalTask: Task; updatedTask: Task }>(),
     'Update Task Success': props<{ task: Task }>(),
     'Update Task Failure': props<{ error: string; originalTask: Task }>(),
 
@@ -20,6 +20,10 @@ export const KanbanActions = createActionGroup({
     'Delete Task Success': props<{ taskId: string }>(),
     'Delete Task Failure': props<{ error: string }>(),
 
-    'Move Task': props<{ task: Task; newStatus: string }>(), // For optimistic updates if needed
+    'Move Task': props<{ task: Task; newStatus: string }>(),
+
+    'Reorder Tasks': props<{ tasks: Task[] }>(),
+    'Reorder Tasks Success': props<{ tasks: Task[] }>(),
+    'Reorder Tasks Failure': props<{ error: string }>(),
   },
 });

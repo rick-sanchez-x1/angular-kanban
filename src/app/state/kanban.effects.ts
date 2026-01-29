@@ -42,8 +42,8 @@ export class KanbanEffects {
   updateTask$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(KanbanActions.updateTask),
-      mergeMap(({ task }) =>
-        this.kanbanService.updateTask(task).pipe(
+      mergeMap(({ originalTask, updatedTask }) =>
+        this.kanbanService.updateTask(updatedTask).pipe(
           map((updatedTask) =>
             KanbanActions.updateTaskSuccess({ task: updatedTask }),
           ),
@@ -51,9 +51,25 @@ export class KanbanEffects {
             of(
               KanbanActions.updateTaskFailure({
                 error: error.message,
-                originalTask: task,
+                originalTask: originalTask,
               }),
             ),
+          ),
+        ),
+      ),
+    );
+  });
+
+  reorderTasks$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(KanbanActions.reorderTasks),
+      mergeMap(({ tasks }) =>
+        forkJoin(tasks.map((task) => this.kanbanService.updateTask(task))).pipe(
+          map((updatedTasks) =>
+            KanbanActions.reorderTasksSuccess({ tasks: updatedTasks }),
+          ),
+          catchError((error) =>
+            of(KanbanActions.reorderTasksFailure({ error: error.message })),
           ),
         ),
       ),
@@ -77,5 +93,5 @@ export class KanbanEffects {
   constructor(
     private actions$: Actions,
     private kanbanService: KanbanService,
-  ) {}
+  ) { }
 }

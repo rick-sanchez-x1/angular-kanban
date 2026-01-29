@@ -26,7 +26,9 @@ export const selectKanbanError = createSelector(
 
 export const selectTasksByStatus = (status: string) =>
   createSelector(selectAllTasks, (tasks) =>
-    tasks.filter((task) => task.status === status),
+    tasks
+      .filter((task) => task.status === status)
+      .sort((a, b) => (a.position ?? 0) - (b.position ?? 0)),
   );
 
 export const selectUserEntities = createSelector(selectAllUsers, (users) =>

@@ -24,7 +24,11 @@
 
   <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
     <span *ngIf="task.dueDate">{{ task.dueDate | date: 'MMM d' }}</span>
-     <div *ngIf="assignedUser" class="flex items-center" [title]="assignedUser.name">
+    <div
+      *ngIf="assignedUser"
+      class="flex items-center"
+      [title]="assignedUser.name"
+    >
       <img
         *ngIf="assignedUser.avatarUrl"
         [src]="assignedUser.avatarUrl"
