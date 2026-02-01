@@ -4,26 +4,18 @@
 
 ## 1. Search Utility
 
-We will introduce a utility class/file `src/app/utils/search.util.ts`.
+We use **Fuse.js** for fuzzy search logic in `src/app/utils/search.util.ts`.
 
 ### Functions
 
 ```typescript
 /**
- * Calculates the Levenshtein distance between two strings.
- * @param a First string
- * @param b Second string
- * @returns The number of edits required to transform a to b
- */
-export function levenshteinDistance(a: string, b: string): number;
-
-/**
- * Checks if a task matches the search query using fuzzy logic.
- * @param task The task object (title, description)
+ * Searches tasks using fuzzy logic provided by Fuse.js.
+ * @param tasks The collection of tasks to search
  * @param query The search query
- * @returns true if matched
+ * @returns Filtered list of tasks
  */
-export function fuzzyMatchTask(task: Task, query: string): boolean;
+export function fuzzySearchTasks(tasks: Task[], query: string): Task[];
 ```
 
 ## 2. Highlighting Pipe
@@ -51,8 +43,7 @@ searchQuery = signal<string>(''); // The current input
 filteredTodoTasks = computed(() => {
   const query = this.searchQuery();
   const tasks = this.todoTasks();
-  if (!query) return tasks;
-  return tasks.filter(t => fuzzyMatchTask(t, query));
+  return fuzzySearchTasks(tasks, query);
 });
-// (Repeat for other columns or refactor to a single filtered source)
+// (Repeat for other columns)
 ```

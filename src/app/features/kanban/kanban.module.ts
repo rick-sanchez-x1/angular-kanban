@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { InputTextModule } from 'primeng/inputtext';
@@ -19,6 +19,7 @@ import { ColumnComponent } from './column/column.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { ComponentsModule } from '../../components/components.module';
+import { HighlightPipe } from '../../pipes/highlight.pipe';
 
 const routes: Routes = [{ path: '', component: BoardComponent }];
 
@@ -28,10 +29,12 @@ const routes: Routes = [{ path: '', component: BoardComponent }];
     ColumnComponent,
     TaskCardComponent,
     TaskFormComponent,
+    HighlightPipe,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     DragDropModule,
     InputTextModule,
     InputTextareaModule,

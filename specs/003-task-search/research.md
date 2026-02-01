@@ -1,40 +1,23 @@
-# Research: Custom Fuzzy Search & Highlighting
+# Research: Fuzzy Search & Highlighting
 
 **Feature**: Task Search (003-task-search)
-**Date**: 2026-02-01
+**Date**: 2026-02-02
 
-## 1. Fuzzy Search Algorithm (Custom Implementation)
+## 1. Fuzzy Search Algorithm
 
-**Requirement**: Implement fuzzy search without external libraries (e.g. Fuse.js).
-**Goal**: Match "Meting" to "Meeting" (typo tolerance) and "doc" to "Documentation" (substring).
+**Decision Update (2026-02-02)**: Switched from a custom Levenshtein implementation to **Fuse.js**.
 
-### Option A: Levenshtein Distance
-Calculates the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other.
+**Why**: 
+- Better performance and handling of multi-word queries.
+- Built-in scoring and ranking.
+- Easier to maintain than custom typo-tolerance logic.
+- Robust handling of edge cases (special characters, large datasets).
 
-*   **Pros**: Standard metric for string similarity. Good for typos.
-*   **Cons**: O(n*m) complexity. Can be expensive if not optimized, but fine for short titles/descriptions. Doesn't inherently handle "substrings" well unless modified (e.g. finding "doc" in "documentation" usually has a high distance due to length difference, unless we check for substring containment first or use "partial" logic).
+**Implementation**: 
+- `fuzzySearchTasks(tasks, query)` replaces `fuzzyMatchTask(task, query)`.
+- Uses `Fuse` with `threshold: 0.4` and `keys: ['title', 'description']`.
 
-### Option B: Trigram / N-gram Similarity
-Break strings into chunks of N characters and count overlaps.
-
-*   **Pros**: Very robust for fuzzy matching.
-*   **Cons**: More complex to implement from scratch than Levenshtein.
-
-### Option C: Hybrid Approach (Filter + Score)
-1.  **Substring Check**: If `text.includes(query)`, it's a match (Score: 100).
-2.  **Levenshtein Check**: If not a substring, check Levenshtein distance against words. If distance <= threshold (e.g. 2), it's a match.
-
-### Decision
-**Use a Hybrid Approach (substring + simple Levenshtein)**.
-For the scale of a Kanban board (hundreds of tasks), a simple Levenshtein implementation is performant enough.
-We will implement a function `fuzzyMatch(text: string, query: string): boolean`.
-
-**Algorithm Logic**:
-1. Normalize both to lowercase.
-2. If `text` contains `query`, return `true`.
-3. If not, split `text` into words.
-4. For each word, calculate Levenshtein distance to `query`.
-5. If distance < Threshold (e.g. 2 for words > 4 chars), return `true`.
+---
 
 ## 2. Text Highlighting
 

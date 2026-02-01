@@ -7,19 +7,18 @@
 
 ## Summary
 
-Implement a real-time, fuzzy search feature for the Kanban board. Users will be able to filter tasks by title and description using a search bar in the header. The solution will use a custom fuzzy matching algorithm (Levenshtein distance) implemented in TypeScript, avoiding external libraries. Matched text within task cards will be highlighted. State management for the search query will be handled via Angular Signals or NgRx depending on persistence needs (likely component-level or Store if we want to persist filter). Given the requirement for "real-time", we will use a reactive approach.
+Implement a real-time, fuzzy search feature for the Kanban board. Users will be able to filter tasks by title and description using a search bar in the header. The solution will use the **Fuse.js** library for fuzzy matching, providing robust typo tolerance and search ranking. Matched text within task cards will be highlighted. State management for the search query will be handled via Angular Signals.
 
 ## Technical Context
 
 **Language/Version**: Angular 17 / TypeScript 5.2+
-**Primary Dependencies**: NgRx (State), PrimeNG (UI - InputText), Tailwind CSS (Styling)
+**Primary Dependencies**: NgRx (State), PrimeNG (UI - InputText), Tailwind CSS (Styling), **Fuse.js (Search)**
 **Storage**: N/A (Client-side filtering)
-**Testing**: Unit tests for the custom fuzzy search algorithm.
+**Testing**: Unit tests for the search utility integration.
 **Target Platform**: Web
 **Project Type**: Single Page Application (Web)
 **Constraints**: 
-- **NO external fuzzy search libraries** (e.g., Fuse.js is banned).
-- Use Custom Levenshtein or similar algorithm.
+- Use Fuse.js for fuzzy search.
 - Highlight matches.
 **Scale/Scope**: Client-side filtering of loaded tasks.
 
@@ -55,7 +54,7 @@ src/
 │   │   │   ├── board/           # Update BoardComponent (Search UI)
 │   │   │   └── ...
 │   ├── utils/
-│   │   └── search.util.ts       # Custom fuzzy search logic
+│   │   └── search.util.ts       # Fuzzy search logic (Fuse.js)
 │   ├── pipes/
 │   │   └── highlight.pipe.ts    # Pipe for text highlighting
 ```
@@ -66,6 +65,6 @@ src/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation                  | Why Needed       | Simpler Alternative Rejected Because                      |
-| -------------------------- | ---------------- | --------------------------------------------------------- |
-| Custom Algo Implementation | User Requirement | External libraries (Fuse.js) explicitly forbidden by spec |
+| Violation | Why Needed | Simpler Alternative Rejected Because |
+| --------- | ---------- | ------------------------------------ |
+|           |            |                                      |
