@@ -13,6 +13,7 @@ export class ColumnComponent {
   @Input({ required: true }) status!: string;
   @Input({ required: true }) id!: string;
   @Input({ required: true }) connectedTo!: string[];
+  @Input() searchQuery: string = '';
   @Output() editTask = new EventEmitter<Task>();
   @Output() dropped = new EventEmitter<CdkDragDrop<Task[]>>();
 }

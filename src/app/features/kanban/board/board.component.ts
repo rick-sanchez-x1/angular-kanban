@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
   CdkDragDrop,
@@ -17,15 +17,34 @@ import { Task, TaskStatus } from '../../../models/kanban.model';
 import { v4 as uuidv4 } from 'uuid';
 import { MessageService } from 'primeng/api';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { fuzzyMatchTask } from '../../../utils/search.util';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
 })
 export class BoardComponent implements OnInit {
-  todoTasks = this.store.selectSignal(selectTasksByStatus('todo'));
-  inprogressTasks = this.store.selectSignal(selectTasksByStatus('inprogress'));
-  doneTasks = this.store.selectSignal(selectTasksByStatus('done'));
+  // Search State
+  searchQuery = signal('');
+
+  // Source Signals
+  private todoTasksSource = this.store.selectSignal(
+    selectTasksByStatus('todo'),
+  );
+  private inprogressTasksSource = this.store.selectSignal(
+    selectTasksByStatus('inprogress'),
+  );
+  private doneTasksSource = this.store.selectSignal(
+    selectTasksByStatus('done'),
+  );
+
+  // Filtered Signals (used in template)
+  todoTasks = computed(() => this.filterTasks(this.todoTasksSource()));
+  inprogressTasks = computed(() =>
+    this.filterTasks(this.inprogressTasksSource()),
+  );
+  doneTasks = computed(() => this.filterTasks(this.doneTasksSource()));
+
   allTasks = this.store.selectSignal(selectAllTasks);
   users = this.store.selectSignal(selectAllUsers);
   loading = this.store.selectSignal(selectKanbanLoading);
@@ -38,6 +57,12 @@ export class BoardComponent implements OnInit {
     private store: Store,
     private messageService: MessageService,
   ) {}
+
+  private filterTasks(tasks: Task[]): Task[] {
+    const query = this.searchQuery();
+    if (!query) return tasks;
+    return tasks.filter((t) => fuzzyMatchTask(t, query));
+  }
 
   ngOnInit(): void {
     this.store.dispatch(KanbanActions.loadInitialData());

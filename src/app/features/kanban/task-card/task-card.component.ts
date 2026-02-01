@@ -11,6 +11,7 @@ import { selectUserEntities } from '../../../state/kanban.selectors';
 })
 export class TaskCardComponent {
   @Input({ required: true }) task!: Task;
+  @Input() searchQuery: string = '';
   @Output() edit = new EventEmitter<Task>();
 
   userEntities = this.store.selectSignal(selectUserEntities);
