@@ -28,15 +28,15 @@
       "title": "Implement Drag & Drop",
       "description": "Use @angular/cdk/drag-drop to allow moving cards between the 'To Do' and 'Done' columns.",
       "priority": "medium",
-      "status": "inprogress",
+      "status": "done",
       "dueDate": "2026-01-29T12:00:00.000Z",
       "assignedUserId": "u1",
-      "position": 2,
+      "position": 0,
       "subtasks": [
         {
           "id": "17d2544c-d0a7-42ff-a1fa-cb8da91a49f0",
           "title": "Step 1",
-          "isCompleted": false
+          "isCompleted": true
         }
       ]
     },
@@ -58,14 +58,14 @@
       "status": "todo",
       "dueDate": "2026-01-25T10:00:00.000Z",
       "assignedUserId": "u1",
-      "position": 1
+      "position": 0
     },
     {
       "id": "t5",
       "title": "Configure json-server",
       "description": "Create db.json and ensure it serves data correctly on port 3000.",
       "priority": "low",
-      "status": "inprogress",
+      "status": "done",
       "dueDate": "2026-01-29T18:30:00.000Z",
       "assignedUserId": "u3",
       "position": 1
@@ -75,7 +75,7 @@
       "title": "Implement Task Creation Form",
       "description": "Build a form component to add new tasks with fields for title, description, priority, due date, and assigned user.",
       "priority": "medium",
-      "status": "done",
+      "status": "todo",
       "dueDate": "2026-01-31T11:00:00.000Z",
       "assignedUserId": "u2",
       "position": 1,
@@ -97,10 +97,22 @@
       "title": "Learn NgRx",
       "description": "Learn the Redux philosophy",
       "priority": "high",
-      "status": "todo",
+      "status": "inprogress",
       "dueDate": "2026-01-27T18:30:00.000Z",
       "assignedUserId": "u1",
-      "position": 0
+      "position": 1,
+      "subtasks": [
+        {
+          "id": "85aedd54-b858-4ad4-9901-a701eb1462ff",
+          "title": "Learn ch 1",
+          "isCompleted": true
+        },
+        {
+          "id": "49d86e53-314a-4754-bf46-90167ea992c1",
+          "title": "Learn ch 2",
+          "isCompleted": false
+        }
+      ]
     }
   ]
 }
