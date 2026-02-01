@@ -77,7 +77,7 @@ As a user, I want to see the matching search terms highlighted within the task c
 - **FR-001**: System MUST provide a search input field in the board header or toolbar.
 - **FR-002**: System MUST filter tasks in real-time as the user types (debounce recommended for performance).
 - **FR-003**: System MUST search across both Task Title and Task Description fields.
-- **FR-004**: System MUST implement a fuzzy matching algorithm (e.g., Levenshtein distance or similar) to handle approximate matches.
+- **FR-004**: System MUST implement a fuzzy matching algorithm using a custom basic function (e.g., basic substring match or simple Levenshtein implementation) without relying on external libraries like Fuse.js.
 - **FR-005**: System MUST visually highlight matching text segments within the task cards (title and description).
 - **FR-006**: System MUST [NEEDS CLARIFICATION: Should the search filter tasks across all columns, or should it only show results in a dedicated view?]
 - **FR-007**: System MUST be case-insensitive by default.
